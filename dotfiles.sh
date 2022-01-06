@@ -15,10 +15,10 @@ set_variables() {
 }
 
 check_dotdir() {
-  printf "\x1b[32mChecking\x1b[37m %s\n" "$DOTDIR"
+  printf "\x1b[32mChecking\x1b[39m %s\n" "$DOTDIR"
 
   if [ -d "$DOTDIR" ]; then
-    printf "\x1b[31mError:\x1b[37m %s already exists\n" "$DOTDIR" 1>&2
+    printf "\x1b[31mError:\x1b[39m %s already exists\n" "$DOTDIR" 1>&2
     exit 1
   fi
 
@@ -27,17 +27,17 @@ check_dotdir() {
 
 clone_dotfiles() {
   if command -v git >/dev/null 2>&1; then
-    printf "\x1b[32mCloning\x1b[37m %s\n" "$REPO_URL"
+    printf "\x1b[32mCloning\x1b[39m %s\n" "$REPO_URL"
     git clone "$REPO_URL" "$DOTDIR" >/dev/null 2>&1
     echo "  Cloned to $DOTDIR"
   else
-    printf "\x1b[31mError:\x1b[37m git command not found\n" 1>&2
+    printf "\x1b[31mError:\x1b[39m git command not found\n" 1>&2
     exit 127
   fi
 }
 
 install_dotfiles() {
-  printf "\x1b[32mExecute\x1b[37m %s\n" "$DOTDIR/install.sh"
+  printf "\x1b[32mExecute\x1b[39m %s\n\n" "$DOTDIR/install.sh"
   "$DOTDIR/install.sh"
 }
 
