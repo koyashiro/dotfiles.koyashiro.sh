@@ -41,10 +41,14 @@ install_dotfiles() {
   "$DOTDIR/install.sh"
 }
 
-set_variables
+main() {
+  set_variables
 
-check_dotdir
+  check_dotdir
 
-clone_dotfiles
+  clone_dotfiles
 
-install_dotfiles
+  install_dotfiles
+}
+
+main
